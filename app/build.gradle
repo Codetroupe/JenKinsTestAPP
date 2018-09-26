@@ -31,6 +31,16 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
+
+            /*apk重命名*/
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "PopMacao-${variant.name}-v${variant.versionName}#${variant.versionCode}-${releaseTime()}.apk"
+                }
+            }
+
+
+
         }
         debug {
             minifyEnabled false
@@ -41,6 +51,11 @@ android {
     lintOptions{
         abortOnError false
     }
+}
+
+// 定义一个打包时间
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
 }
 
 dependencies {
