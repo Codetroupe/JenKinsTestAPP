@@ -10,10 +10,22 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        config {
+            keyAlias 'JenKinsTestKey'
+            keyPassword 'kk123456'
+            storeFile file('D:/AndroidProject/JenKinsTestKey.jks')
+            storePassword 'kk123456'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
     lintOptions{
