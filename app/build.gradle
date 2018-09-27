@@ -1,3 +1,5 @@
+IS_JENKINS = 'false'
+BUILD_TIME = ''
 apply plugin: 'com.android.application'
 
 android {
@@ -32,7 +34,11 @@ android {
             /*apk重命名*/
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    outputFileName = "PopMacao-${variant.name}-v${variant.versionName}#${variant.versionCode}-${releaseTime()}.apk"
+                    if("true".equals(IS_JENKINS)){
+                        outputFileName = "PopMacao-${variant.name}-v${variant.versionName}#${variant.versionCode}-${BUILD_TIME}.apk"
+                    }else{
+                        outputFileName = "PopMacao-${variant.name}-v${variant.versionName}#${variant.versionCode}-${releaseTime()}.apk"
+                    }
                 }
             }
 
@@ -60,6 +66,19 @@ android {
         exclude 'META-INF/NOTICE.txt'
         exclude 'pom.properties'
     }
+
+    //渠道Flavors
+    productFlavors {
+        huawei {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+        }
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+    }
+
+
+
 }
 
 // 定义一个打包时间
