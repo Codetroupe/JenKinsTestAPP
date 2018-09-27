@@ -35,7 +35,7 @@ android {
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     if("true".equals(IS_JENKINS)){
-                        outputFileName = "PopMacao-${variant.name}-v${variant.versionName}#${variant.versionCode}-${BUILD_TIME}.apk"
+                        outputFileName = "PopMacao-${variant.name}-v${variant.versionName}#${variant.versionCode}-${JENKINS_TIME}.apk"
                     }else{
                         outputFileName = "PopMacao-${variant.name}-v${variant.versionName}#${variant.versionCode}-${releaseTime()}.apk"
                     }
