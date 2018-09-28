@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         text = findViewById(R.id.test_text);
-        text.setText(packageCode(this)+"-----"+packageName(this));
+        text.setText("代码版本号："+packageCode(this)+"-----\r\n程序版本号："+packageName(this));
 
     }
 
