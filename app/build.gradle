@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 
+def Jenkins_build_num = JENKINS_BUILD_NUMBER.toInteger()
 android {
 
     compileSdkVersion 28
@@ -8,7 +9,7 @@ android {
         applicationId "com.poptek.jenkinstestapp"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 1
+        versionCode Jenkins_build_num
         versionName APP_VERSION
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -17,10 +18,10 @@ android {
 
     signingConfigs {
         config {
-            keyAlias 'test1'
-            keyPassword 'kk123456'
-            storeFile file('D:/AndroidProject/key/JenKinsTestKey.jks')
-            storePassword 'kk123456'
+            keyAlias APP_KEY_ALIAS
+            keyPassword APP_KEY_PASSWORD
+            storeFile file(APP_STORE_FILE_DIR)
+            storePassword APP_STORE_PASSWORD
         }
     }
 
