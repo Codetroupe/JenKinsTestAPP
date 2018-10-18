@@ -24,8 +24,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.config
-
+            signingConfig signingConfigs.config
             /*apk重命名*/
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
@@ -37,9 +36,6 @@ android {
 
                 }
             }
-
-
-
         }
         debug {
             minifyEnabled false
@@ -52,12 +48,10 @@ android {
                     }else{
                         outputFileName = "JenkinsTest-${variant.name}-v${APP_VERSION}#${variant.versionCode}-${releaseTime()}.apk"
                     }
-
                 }
             }
         }
     }
-
 
 
     lintOptions{
@@ -69,6 +63,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     packagingOptions {
         exclude 'AndroidManifest.xml'
         exclude 'META-INF/LICENSE.txt'
