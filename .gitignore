@@ -31,3 +31,17 @@ local.properties
 
 # Log Files
 *.log
+
+#如果是SVN则在.idea/workspace.xml文件的中</list>后面加
+
+#<ignored path="local.properties" />
+#<ignored path=".gradle/" />
+#<ignored path=".idea/" />
+#<ignored path="app/build/" />
+#<ignored path="build/" />
+#<ignored mask="*.iml" />
+#<ignored mask="*.dex" />
+#<ignored mask="*.class" />
+#<ignored mask="*.apk" />
+#<ignored mask="*.ap_" />
+#<ignored mask="*.log" />
